@@ -37,11 +37,11 @@ let doSubmit = function()
     {
         $(".error").css("display", "none");
 
-        // Create an object for the user"s data
+        // Create an object for the user's data
         var userData =
         {
-            name: $("#name").val(),
-            photo: $("#photo").val(),
+            name: $("#name").val().trim(),
+            photo: $("#photo").val().trim(),
             scores:
             [
                 $("#q1").val(),
@@ -62,7 +62,6 @@ let doSubmit = function()
         //POST the data.
         $.post("/api/friends", userData, function(data)
         {
-  
             console.log(data);
 
             $("#myModal").css("display", "block");
@@ -88,7 +87,8 @@ let doClose = function()
 
 $(document).ready(function()
 {
-    $(".chosen-select").chosen({
+    $(".chosen-select").chosen(
+    {
         disable_search_threshold: 10,
         width: "25%"
     });

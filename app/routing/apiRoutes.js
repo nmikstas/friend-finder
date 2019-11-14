@@ -34,4 +34,14 @@ module.exports = function(app)
 
         res.json(friendsArray[lowestIndex]);
     });
+
+    app.get("/api/clear", function(req, res)
+    {
+        while(friendsArray.length > 4)
+        {
+            friendsArray.pop();
+        }
+
+        res.redirect("/");
+    });
 }
